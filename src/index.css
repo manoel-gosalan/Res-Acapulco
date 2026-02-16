@@ -1,0 +1,191 @@
+
+
+/* stylelint-disable at-rule-no-unknown */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* stylelint-enable at-rule-no-unknown */
+
+@layer base {
+  :root {
+    /* ACAPULCO Brand Colors - Grelhados/Churrasqueira */
+    --background: 0 0% 5%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Primary - Deep Red (Brasa/Grelha) */
+    --primary: 0 72% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Warm Gray */
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 65%;
+
+    /* Accent - Bright Red for CTAs */
+    --accent: 0 85% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 18%;
+    --input: 0 0% 15%;
+    --ring: 0 72% 45%;
+
+    --radius: 0.75rem;
+
+    /* Custom brand tokens */
+    --charcoal: 0 0% 3%;
+    --ember: 15 90% 50%;
+    --smoke: 0 0% 25%;
+    --gold: 40 90% 55%;
+
+    /* Gradients */
+    --gradient-fire: linear-gradient(135deg, hsl(0 72% 45%) 0%, hsl(15 90% 50%) 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(0 0% 8%) 0%, hsl(0 0% 3%) 100%);
+    --gradient-hero: linear-gradient(180deg, transparent 0%, hsl(0 0% 3% / 0.9) 100%);
+
+    /* Shadows */
+    --shadow-glow: 0 0 40px hsl(0 72% 45% / 0.3);
+    --shadow-card: 0 8px 32px hsl(0 0% 0% / 0.4);
+    --shadow-button: 0 4px 20px hsl(0 72% 45% / 0.4);
+
+    --sidebar-background: 0 0% 8%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 0 72% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 0 0% 18%;
+    --sidebar-ring: 0 72% 45%;
+  }
+
+  
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+  background-color: #0d0d0d; /* Força preto direto! */
+  color: #fafafa; /* Força branco direto! */
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Bebas Neue', system-ui, sans-serif;
+    letter-spacing: 0.02em;
+  }
+}
+
+@layer components {
+  .text-gradient-fire {
+    background: linear-gradient(135deg, hsl(0 72% 55%) 0%, hsl(25 90% 55%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-gradient-fire {
+    background: linear-gradient(135deg, hsl(0 72% 45%) 0%, hsl(15 90% 50%) 100%);
+  }
+
+  .bg-gradient-dark {
+    background: linear-gradient(180deg, hsl(0 0% 8%) 0%, hsl(0 0% 3%) 100%);
+  }
+
+  .shadow-glow {
+    box-shadow: 0 0 40px hsl(0 72% 45% / 0.3);
+  }
+
+  .shadow-glow-strong {
+    box-shadow: 0 0 60px hsl(0 72% 45% / 0.5);
+  }
+
+  .card-hover {
+    @apply transition-all duration-300;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px hsl(0 0% 0% / 0.5);
+  }
+
+  .btn-primary-glow {
+    @apply relative overflow-hidden;
+    box-shadow: 0 4px 20px hsl(0 72% 45% / 0.4);
+  }
+
+  .btn-primary-glow:hover {
+    box-shadow: 0 6px 30px hsl(0 72% 45% / 0.6);
+  }
+
+  .floating-cta {
+    @apply fixed bottom-0 left-0 right-0 z-50 p-4;
+    background: linear-gradient(0deg, hsl(0 0% 3%) 0%, hsl(0 0% 3% / 0.95) 80%, transparent 100%);
+    padding-bottom: env(safe-area-inset-bottom, 1rem);
+  }
+
+  .section-padding {
+    @apply px-4 py-12 md:px-8 md:py-20 lg:px-16;
+  }
+
+  .container-narrow {
+    @apply max-w-6xl mx-auto;
+  }
+
+  .hero-bg {
+    background-image: url('../assets/hero-grelhados.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px hsl(0 72% 45% / 0.3); }
+    50% { box-shadow: 0 0 40px hsl(0 72% 45% / 0.5); }
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.6s ease-out forwards;
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
