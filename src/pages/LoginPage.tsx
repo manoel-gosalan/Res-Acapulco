@@ -7,6 +7,8 @@ import heroBg from "@/assets/hero-grelhados.jpg";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Link } from "react-router-dom";
+
 
 type ProfileRole = "admin" | "user";
 
@@ -131,6 +133,16 @@ export default function LoginPage() {
     <Button className="w-full" type="submit" disabled={loading}>
       {loading ? "Entrando..." : "Entrar"}
     </Button>
+
+    <div className="flex justify-end">
+      <Link
+          to="/forgot-password"
+          className="text-sm text-primary hover:underline"
+      >
+        Esqueci minha senha
+      </Link>
+    </div>
+
   </form>
     </div >
   );

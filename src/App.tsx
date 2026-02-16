@@ -26,66 +26,79 @@ import ProfilePage from "@/pages/account/ProfilePage";
 import OrderHistoryPage from "@/pages/account/OrderHistoryPage";
 import { AccountRoute } from "@/components/account/AccountRoute";
 import RegisterPage from "./pages/account/RegisterPage";
+import ForgotPasswordPage from "./pages/ForgotPasswordPage";
+import ResetPasswordPage from './pages/ResetPasswordPage';
+
 
 const queryClient = new QueryClient();
 
-const router = createBrowserRouter(
-  [
-    // Público
-    { path: "/", element: <Index /> },
-    { path: "/pratos-do-dia", element: <PratosDoDia /> },
-    { path: "/especialidades", element: <Especialidades /> },
-    { path: "/contactos", element: <Contactos /> },
-    { path: "/sobre", element: <Sobre /> },
-    { path: "/registro", element: <RegisterPage/>},
+class Router {
+}
 
-    // Login único
-    { path: "/login", element: <LoginPage /> },
+let router: Router;
+// @ts-ignore
+router = createBrowserRouter(
+    [
+        // Público
+        {path: "/", element: <Index/>},
+        {path: "/pratos-do-dia", element: <PratosDoDia/>},
+        {path: "/especialidades", element: <Especialidades/>},
+        {path: "/contactos", element: <Contactos/>},
+        {path: "/sobre", element: <Sobre/>},
+        {path: "/registro", element: <RegisterPage/>},
+        {path: "/forgot-password", element: <ForgotPasswordPage/>},
+        {path: "/reset-password", element: <ResetPasswordPage/>},
 
-    // Área do cliente
+
+        // Login único
+        {path: "/login", element: <LoginPage/>},
+
+        // Área do cliente
+        {
+            path: "/account",
+            element: (
+                <AccountRoute>
+                    <AccountIndex/>
+                </AccountRoute>
+            ),
+            children: [
+                {index: true, element: <ProfilePage/>},
+                {path: "orders", element: <OrderHistoryPage/>},
+            ],
+        },
+
+        // Admin
+        {
+            path: "/admin/pedidos",
+            element: (
+                <AdminRoute>
+                    <AdminPedidos/>
+                </AdminRoute>
+            ),
+        },
+
+        // 404
+        {path: "*", element: <NotFound/>},
+    ],
     {
-      path: "/account",
-      element: (
-        <AccountRoute>
-          <AccountIndex />
-        </AccountRoute>
-      ),
-      children: [
-        { index: true, element: <ProfilePage /> },
-        { path: "orders", element: <OrderHistoryPage /> },
-      ],
-    },
-
-    // Admin
-    {
-      path: "/admin/pedidos",
-      element: (
-        <AdminRoute>
-          <AdminPedidos />
-        </AdminRoute>
-      ),
-    },
-
-    // 404
-    { path: "*", element: <NotFound /> },
-  ],
-  {
-    future: { v7_relativeSplatPath: true },
-  }
+        future: {v7_relativeSplatPath: true},
+    }
 );
 
-export default function App() {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        <CartProvider>
-          <TooltipProvider>
-            <Toaster />
-            <Sonner />
-            <RouterProvider router={router} />
-          </TooltipProvider>
-        </CartProvider>
-      </AuthProvider>
-    </QueryClientProvider>
-  );
+function App() {
+    return (
+        <QueryClientProvider client={queryClient}>
+            <AuthProvider>
+                <CartProvider>
+                    <TooltipProvider>
+                        <Toaster/>
+                        <Sonner/>
+                        <RouterProvider router={router}/>
+                    </TooltipProvider>
+                </CartProvider>
+            </AuthProvider>
+        </QueryClientProvider>
+    );
 }
+
+export default App
