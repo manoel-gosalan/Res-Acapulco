@@ -70,8 +70,11 @@ export function Footer() {
         </div>
 
         <div className="mt-12 pt-8 border-t border-border text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} ACAPULCO Take Away. Todos os direitos reservados.</p>
-        </div>
+  <p>© {new Date().getFullYear()} ACAPULCO Take Away. Todos os direitos reservados.</p>
+  <p className="mt-1">
+    Desenvolvido por <span className="font-medium">Manoel Gosalan</span>
+  </p>
+</div>
       </div>
     </footer>
   );
