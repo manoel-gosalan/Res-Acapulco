@@ -78,7 +78,7 @@ export function Footer() {
     <p className="flex items-center gap-1">
       Desenvolvido por
       <a
-        href="https://github.com/SEU_USUARIO"
+        href="https://github.com/manoel-gosalan"
         target="_blank"
         rel="noopener noreferrer"
         className="font-medium text-foreground hover:opacity-80 transition-opacity"
