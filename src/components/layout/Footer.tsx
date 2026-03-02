@@ -69,13 +69,25 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-border text-center text-sm text-muted-foreground">
-  <p>© {new Date().getFullYear()} ACAPULCO Take Away. Todos os direitos reservados.</p>
-  <p className="mt-1">
-    Desenvolvido por <span className="font-medium">Manoel Gosalan</span>
-  </p>
-</div>
-      </div>
+         <div className="flex flex-col items-center gap-3 text-center text-sm text-muted-foreground">
+    
+    <p>
+      © {new Date().getFullYear()} ACAPULCO Take Away. Todos os direitos reservados.
+    </p>
+
+    <p className="flex items-center gap-1">
+      Desenvolvido por
+      <a
+        href="https://github.com/SEU_USUARIO"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="font-medium text-foreground hover:opacity-80 transition-opacity"
+      >
+        Manoel Gosalan
+      </a>
+    </p>
+
+  </div>
     </footer>
   );
 }
